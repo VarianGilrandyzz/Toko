@@ -18,6 +18,6 @@ class IsAdmin
         if(auth()->user()->is_admin == 1){
             return $next($request);
         }
-        return redirect ('home')->with('error',"Admin access denied.");
+        return redirect()->route('admin.home')->with('error',"Admin access denied.");
     }
 }
