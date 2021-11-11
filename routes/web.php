@@ -19,4 +19,5 @@ Route::get('/', function () {
 });
 
 Route::get('admin/home', 'HomeController@index')->name('admin.home');
-Route::get('admin/user', 'HomeController@index')->name('admin.user')->middleware('is_admin');
+Route::resource('admin/user', UserController::class);
+

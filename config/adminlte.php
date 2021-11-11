@@ -244,7 +244,7 @@ return [
         ['header' => 'User'],
         [
             'text' => 'profile',
-            'url'  => 'admin/profile',
+            'url'  => 'admin/user/1',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
