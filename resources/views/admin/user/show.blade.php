@@ -7,7 +7,6 @@
 @stop
 
 @section('content')
-    <div class="container">
     <div class="row justify-content-center">
         <div class="col">
             <div class="card">
@@ -36,11 +35,14 @@
                        </tr>
                      </tbody>
                    </table>
-                    @if ($user->is_admin == 1)
-                      <a class="btn btn-primary" type="button" href="/admin/user/{{$user->id}}/edit">Edit</a>
+                    @if (Auth::user()->is_admin == 1)
+                      <a class="btn btn-primary" type="button" href="{{ route('user.edit', ['user'=>$user->id]) }}">Edit</a>
                     @endif
-                    <a class="btn btn-secondary" type="button" href="{{route('admin.home')}}">Back</a>
+                    @include('componen.btnBack')
                 </div>
+            </div>
+        </div>
+    </div>
 @stop
 
 @section('css')

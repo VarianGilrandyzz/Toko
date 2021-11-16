@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function __construct()
     {
         // Protect all functions except some:
-        $this->middleware('is_admin')->except(['show']);
+        $this->middleware(['is_admin','auth']);
     }
     /**
      * Display a listing of the resource.
@@ -20,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.userIndex',['data'=>User::all()]);
+        return view('admin.user.index',['users'=>User::all()]);
     }
 
     /**
@@ -30,7 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.userForm');
+        return view('admin.user.create');
     }
 
     /**
@@ -41,7 +42,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $input['password'] = Hash::make($input['password']);
+        try {
+            User::create($input);
+            return redirect()->route('user.index')->with('info', 'data berhasil di tambahkan');
+        } catch (\Throwable $th) {
+            return redirect()->route('user.index')->with('error', $th);
+        }
     }
 
     /**
@@ -52,14 +66,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //check authentikasi user dalam mengambil data
-        if (Auth::user()->is_admin != 1) {
-            $data = User::find(Auth::id());
-            return view('admin.userDetail', ['user' => $data]);
-        }
-
         $data = User::find($id);
-        return view('admin.userDetail', ['user' => $data]);
+        return view('admin.user.show', ['user' => $data]);
     }
 
     /**
@@ -71,7 +79,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $data = User::find($id);
-        return view('admin.userForm', ['user'=>$data]);
+        return view('admin.user.update', ['user'=>$data]);
     }
 
     /**
@@ -83,7 +91,37 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $user = User::find($id);
+
+        $this->validate($request, [
+            'name' => ['string', 'max:255'],
+            'email' => ['string', 'email', 'max:255'],
+            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        //array password di hapus apabila password tidak di perbarui
+        if ($input['password'] == null) {
+            unset($input['password']);
+        }else{
+            //enkripsi password
+            $input['password'] = Hash::make($input['password']);
+        }
+
+        //set array is admin apabila chack box bernilai false
+        if (!array_key_exists('is_admin',$input)) {
+            $input['is_admin'] = 0;
+        }
+        
+        
+
+        try {
+            $user->update($input);
+            return redirect()->route('user.index')->with('success', 'Data berhasil di perbarui');
+        } catch (\Throwable $th) {
+            // dd($th);
+            return redirect()->route('user.index')->with('error', 'Data Gagal di perbarui');
+        }
     }
 
     /**
@@ -96,11 +134,11 @@ class UserController extends Controller
     {
         $data = User::find($id);
         try {
-            $data->destroy();
-            return redirect('/admin/user')->with('success', "Data telah di hapus");
+            $data->delete();
+            return redirect('/admin/user')->with('info', "Data telah di hapus");
         } catch (\Throwable $th) {
-            return redirect('/admin/user')->with('error', "Gagal menghapus data");
+            // dd($th);
+            return redirect('/admin/user')->with('error', 'data gagal di hapus');
         }
-
     }
 }
