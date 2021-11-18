@@ -1,16 +1,16 @@
 @extends('adminlte::page')
 
-@section('title', 'User Detail')
+@section('title', 'Add Barang')
 
 @section('content_header')
-    <h1>User Detail</h1>
+    <h1>Tambah Barang</h1>
 @stop
 
 @section('content')
     <div class="row justify-content-center">
         <div class="col">
             <div class="card">
-                <div class="card-header">Add User</div>
+                <div class="card-header">Tambahkan Barang</div>
                 <div class="card-body">
                    <form action="{{ route('barang.store') }}" method="POST">
                       {{ csrf_field() }}
