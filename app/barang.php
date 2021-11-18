@@ -4,14 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class barang extends Model
+class Barang extends Model
 {
     //
     protected $table = 'barang';
+
+    protected $fillable = [
+        'nama_barang', 'harga'
+    ];
+
     protected $primaryKey = 'id_barang';
-    protected $incrementing = true;
     public $timestamps = false;
-
-    
-
 }

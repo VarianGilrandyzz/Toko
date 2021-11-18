@@ -23,5 +23,6 @@ Route::get('admin', 'HomeController@index')->name('admin.home');
 Route::get('admin/profile', 'homeController@profile')->name('admin.profile');
 
 Route::resource('admin/user', UserController::class);
+Route::resource('admin/barang', BarangController::class);
 
 

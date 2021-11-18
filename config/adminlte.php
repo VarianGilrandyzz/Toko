@@ -262,7 +262,7 @@ return [
         ],
         [
             'text' => 'Barang',
-            'url'  => 'admin/settings',
+            'url'  => 'admin/barang',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
