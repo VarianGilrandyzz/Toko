@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('/home/index');
 });
 
+Route::get('home', function () {
+    return redirect()->route('admin.home');
+});
+
 Route::get('admin', 'HomeController@index')->name('admin.home');
 Route::get('admin/profile', 'homeController@profile')->name('admin.profile');
 
