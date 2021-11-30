@@ -17,7 +17,11 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('/home/index');
-});
+})->name('home');
+
+Route::get('/pemesanan', function () {
+    return view('/home/pemesanan');
+})->name('pemesanan');
 
 Route::get('home', function () {
     return redirect()->route('admin.home');

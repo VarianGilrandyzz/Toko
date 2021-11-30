@@ -24,35 +24,35 @@
               'nama' => 'akua',
               'deskripsi' => 'Melayani Pembelian barang kami melalui situs web kami',
               'harga' =>'12000',
-              'img' => 'https://cf.shopee.co.id/file/f365d079bc1e2db366a210d82812a0e6'
+              'gambar' => 'https://cf.shopee.co.id/file/f365d079bc1e2db366a210d82812a0e6'
             ],
             [
               'id' => '1',
               'nama' => 'akua',
               'deskripsi' => 'Melayani Pembelian barang kami melalui situs web kami',
               'harga' =>'12000',
-              'img' => 'https://cf.shopee.co.id/file/f365d079bc1e2db366a210d82812a0e6'
+              'gambar' => 'https://cf.shopee.co.id/file/f365d079bc1e2db366a210d82812a0e6'
             ],
             [
               'id' => '1',
               'nama' => 'akua',
               'deskripsi' => 'Melayani Pembelian barang kami melalui situs web kami',
               'harga' =>'12000',
-              'img' => 'https://cf.shopee.co.id/file/f365d079bc1e2db366a210d82812a0e6'
+              'gambar' => 'https://cf.shopee.co.id/file/f365d079bc1e2db366a210d82812a0e6'
             ],
             [
               'id' => '1',
               'nama' => 'akua',
               'deskripsi' => 'Melayani Pembelian barang kami melalui situs web kami',
               'harga' =>'12000',
-              'img' => 'https://cf.shopee.co.id/file/f365d079bc1e2db366a210d82812a0e6'
+              'gambar' => 'https://cf.shopee.co.id/file/f365d079bc1e2db366a210d82812a0e6'
             ]]
           ?>
           {{-- END Data Testi --}}
 
         <div class="row">
           @foreach ($produk as $item)
-              @include('componen.produkCard')
+              @include('componen.produkCard',['btn'=>false])
           @endforeach
         </div>
       </div>
