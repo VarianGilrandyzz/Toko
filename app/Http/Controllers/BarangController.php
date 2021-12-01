@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Barang;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class BarangController extends Controller
 {
@@ -45,7 +46,16 @@ class BarangController extends Controller
         $this->validate($request, [
             'nama_barang' => ['required','max:30','string'],
             'harga' => ['required', 'numeric'],
+            'deskripsi' => ['max:100', 'string'],
+            'gambar' => ['image','max:2048']
         ]);
+
+        //upload gambar
+        if ($request->hasFile('gambar')) {
+            $file_name = time() . $input['nama_barang'].'.'.$request->gambar->extension();
+            $request->gambar->move(public_path('upload'), $file_name);
+            $input['gambar'] = $file_name;
+        };
 
         try {
             Barang::create($input);
@@ -88,12 +98,25 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         $barang = Barang::find($id);
-        $input = $request->all();
 
+        $input = $request->all();
         $this->validate($request, [
             'nama_barang' => ['required', 'max:30', 'string'],
             'harga' => ['required', 'numeric'],
+            'deskripsi' => ['max:100', 'string'],
+            'gambar' => ['image', 'max:2048']
         ]);
+
+        //upload gambar
+        if ($request->hasFile('gambar')) {
+            if ($barang->gambar == null) {
+                $file_name = time() . $input['nama_barang'] . '.' . $request->gambar->extension();
+            }else{
+                $file_name = $barang->gambar;
+            }
+            $request->gambar->move(public_path('upload'), $file_name);
+            $input['gambar'] = $file_name;
+        };
 
         try {
             $barang->update($input);
@@ -115,6 +138,11 @@ class BarangController extends Controller
 
         try {
             $data->delete();
+            if (File::exists(public_path('upload/'.$data->gambar))) {
+                File::delete(public_path('upload/'.$data->gambar));
+            } else {
+                dd('File does not exists.');
+            }
             return redirect()->route('barang.index')->with('info', 'barang berhasil di hapus');
         } catch (\Throwable $th) {
             return redirect()->route('barang.index')->with('error', 'barang tidak dapat di hapus');

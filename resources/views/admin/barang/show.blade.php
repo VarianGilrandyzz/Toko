@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Add Barang')
+@section('title', 'Detail Barang')
 
 @section('content_header')
-    <h1>Detail Barang</h1>
+    <h1>Detail Barang : {{$barang->nama_barang}}</h1>
 @stop
 
 @section('content')
@@ -11,6 +11,8 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
+                  <img src="/upload/{{$barang->gambar}}" alt="gambar Produk" height="200px"
+                            onerror="this.onerror=null; this.src='/img/apple-touch-icon.png'">
                    <table class="table table-light">
                      <tbody>
                        <tr>
@@ -20,6 +22,10 @@
                        <tr>
                          <td>Harga (@): </td>
                          <td>{{$barang->harga}}</td>
+                       </tr>
+                       <tr>
+                         <td>Deskripsi : </td>
+                         <td>{{$barang->deskripsi}}</td>
                        </tr>
                      </tbody>
                    </table>

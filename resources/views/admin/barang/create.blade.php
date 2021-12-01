@@ -12,7 +12,7 @@
             <div class="card">
                 <div class="card-header">Tambahkan Barang</div>
                 <div class="card-body">
-                   <form action="{{ route('barang.store') }}" method="POST">
+                   <form action="{{ route('barang.store') }}" method="POST" enctype="multipart/form-data">
                       {{ csrf_field() }}
 
                       <div class="input-group mb-3">
@@ -44,6 +44,38 @@
                               </div>
                           @endif
                       </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <i class="fa fa-paragraph" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <textarea name="deskripsi" class="form-control {{ $errors->has('deskripsi') ? 'is-invalid' : '' }}"
+                                    value="{{ old('deskripsi') }}" placeholder="Deskirpsi Barang (Max 100 Karakter)" autofocus rows="5"></textarea>      
+                            @if($errors->has('deskripsi'))
+                                <div class="invalid-feedback">
+                                    <strong>{{ $errors->first('deskripsi') }}</strong>
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <i class="fa fa-file-image" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="custom-file">
+                            <input name="gambar" type="file" class="custom-file-input" id="inputGroupFile01">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>      
+                            @if($errors->has('gambar'))
+                                <div class="invalid-feedback">
+                                    <strong>{{ $errors->first('gambar') }}</strong>
+                                </div>
+                            @endif
+                        </div>
                       
                       
                       {{-- add button --}}
