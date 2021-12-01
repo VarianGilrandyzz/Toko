@@ -15,20 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/', function () {
-    return view('/home/index');
-})->name('home');
+Route::get('/', 'UserHomeController@index')->name('home');
+Route::get('/pemesanan', 'UserHomeController@pemesanan')->name('pemesanan');
 
-Route::get('/pemesanan', function () {
-    return view('/home/pemesanan');
-})->name('pemesanan');
-
-Route::get('home', function () {
-    return redirect()->route('admin.home');
-});
-
-Route::get('admin', 'HomeController@index')->name('admin.home');
-Route::get('admin/profile', 'homeController@profile')->name('admin.profile');
+Route::get('admin', 'AdminHomeController@index')->name('admin.home');
 
 Route::resource('admin/user', UserController::class);
 Route::resource('admin/barang', BarangController::class);

@@ -1,5 +1,6 @@
 .produk-card{
   min-height: 230px;
+  width: 100%!important;
   background-size: cover!important;
 }
 

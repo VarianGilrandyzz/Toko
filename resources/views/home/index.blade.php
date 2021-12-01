@@ -17,41 +17,8 @@
           <h3>Daftar <span>Produk atau Barang</span> Kami</h3>
         </div>
 
-        {{-- Data Testing --}}
-        <?php
-            $produk = [[
-              'id' => '1',
-              'nama' => 'akua',
-              'deskripsi' => 'Melayani Pembelian barang kami melalui situs web kami',
-              'harga' =>'12000',
-              'gambar' => 'https://cf.shopee.co.id/file/f365d079bc1e2db366a210d82812a0e6'
-            ],
-            [
-              'id' => '1',
-              'nama' => 'akua',
-              'deskripsi' => 'Melayani Pembelian barang kami melalui situs web kami',
-              'harga' =>'12000',
-              'gambar' => 'https://cf.shopee.co.id/file/f365d079bc1e2db366a210d82812a0e6'
-            ],
-            [
-              'id' => '1',
-              'nama' => 'akua',
-              'deskripsi' => 'Melayani Pembelian barang kami melalui situs web kami',
-              'harga' =>'12000',
-              'gambar' => 'https://cf.shopee.co.id/file/f365d079bc1e2db366a210d82812a0e6'
-            ],
-            [
-              'id' => '1',
-              'nama' => 'akua',
-              'deskripsi' => 'Melayani Pembelian barang kami melalui situs web kami',
-              'harga' =>'12000',
-              'gambar' => 'https://cf.shopee.co.id/file/f365d079bc1e2db366a210d82812a0e6'
-            ]]
-          ?>
-          {{-- END Data Testi --}}
-
         <div class="row">
-          @foreach ($produk as $item)
+          @foreach ($barang as $item)
               @include('componen.produkCard',['btn'=>false])
           @endforeach
         </div>
