@@ -46,7 +46,7 @@
             </div>
             <div class="form-group">
               <label for="alamat">Alamat</label>
-              <textarea name="alamat" id="alamat" class="form-control" rows="5">Alamat Lengkap</textarea>
+              <textarea name="alamat" id="alamat" class="form-control" rows="5" placeholder="Alamat Lengkap"></textarea>
             </div>
             <div class="form-group">
               <div class="form-check">

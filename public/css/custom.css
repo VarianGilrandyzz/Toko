@@ -2,6 +2,11 @@
   min-height: 230px;
   width: 100%!important;
   background-size: cover!important;
+  color: white!important;
+}
+
+.produk-card .card-title{
+  color: white!important;
 }
 
 .form-group{
