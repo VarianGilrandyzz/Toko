@@ -256,8 +256,8 @@ return [
         ],
         ['header' => 'Pesanan'],
         [
-            'text' => 'Pelangan',
-            'url'  => 'admin/settings',
+            'text' => 'Pembeli',
+            'url'  => 'admin/pembeli',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [

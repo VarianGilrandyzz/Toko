@@ -21,10 +21,11 @@ Auth::routes([
 
 Route::get('/', 'UserHomeController@index')->name('home');
 Route::get('/pemesanan', 'UserHomeController@pemesanan')->name('pemesanan');
-
 Route::get('admin', 'AdminHomeController@index')->name('admin.home');
 
+// route resource
 Route::resource('admin/user', UserController::class);
 Route::resource('admin/barang', BarangController::class);
+Route::resource('admin/pembeli', PembeliController::class);
 
 
