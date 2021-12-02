@@ -11,18 +11,21 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping data for table ladida.barang: ~1 rows (approximately)
+-- Dumping data for table ladida.barang: ~2 rows (approximately)
 /*!40000 ALTER TABLE `barang` DISABLE KEYS */;
 REPLACE INTO `barang` (`id_barang`, `nama_barang`, `harga`, `deskripsi`, `gambar`) VALUES
-	(1, 'Air Mineral  Galon Aqua', 20000, NULL, NULL);
+	(1, 'Air Mineral  Galon Aqua', 20000, 'asdsad', '1638390366Air Mineral  Galon Aqua.jpg'),
+	(4, 'Tabung Gas Elpiji', 19000, 'Tabung Gas Hijau Elpiji 3Kg', '1638389088Aquades.jpg');
 /*!40000 ALTER TABLE `barang` ENABLE KEYS */;
 
 -- Dumping data for table ladida.detail_pemesanan: ~0 rows (approximately)
 /*!40000 ALTER TABLE `detail_pemesanan` DISABLE KEYS */;
 /*!40000 ALTER TABLE `detail_pemesanan` ENABLE KEYS */;
 
--- Dumping data for table ladida.pembeli: ~0 rows (approximately)
+-- Dumping data for table ladida.pembeli: ~1 rows (approximately)
 /*!40000 ALTER TABLE `pembeli` DISABLE KEYS */;
+REPLACE INTO `pembeli` (`id_pembeli`, `nama_lengkap`, `alamat`, `no_telp`) VALUES
+	(3, 'Isyak Rizqi', 'Banyuwangi', '87762680737');
 /*!40000 ALTER TABLE `pembeli` ENABLE KEYS */;
 
 -- Dumping data for table ladida.pemesanan: ~0 rows (approximately)
