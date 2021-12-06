@@ -12,6 +12,10 @@ class pemesanan extends Model
     public $incrementing = true;
     public $timestamps = false;
 
+    protected $fillable = [
+        'tgl_pemesanan', 'total_biaya', 'status', 'id_pembeli'
+    ];
+
     public function detail_pemesanan()
     {
         return $this->hasMany('App\detail_pemesanan','id_pemesanan','id_pemesanan');

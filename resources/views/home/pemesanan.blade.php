@@ -5,7 +5,9 @@
     
       @include('componen.breadcrumbs',['page'=>'Pemesanan'])
 
-      <form action="#" method="GET">
+      <form action="{{ route('proses.pemesanan') }}" method="POST">
+      {{-- <form action="#" method="GET"> --}}
+        @csrf
         <!-- Quantity Section -->
         <section class="inner-page">
           <div class="container">
@@ -39,7 +41,20 @@
                 </div>
                 <div class="form-group col-md-6">
                   <label for="phone">Telepon/WA</label>
-                  <input type="tel" class="form-control" id="phone" name="no_telp" placeholder="Masukan Nomor Telepon/WA">
+                  <div class="input-group mb-3">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            +62
+                        </div>
+                    </div>
+                    <input type="number" name="no_telp" class="form-control {{ $errors->has('no_telp') ? 'is-invalid' : '' }}"
+                          value="{{ old('no_telp') }}" placeholder="No. telp/WA pembeli">                    
+                    @if($errors->has('no_telp'))
+                        <div class="invalid-feedback">
+                            <strong>{{ $errors->first('no_telp') }}</strong>
+                        </div>
+                    @endif
+                  </div>
                 </div>
               </div>
             </div>
@@ -49,14 +64,14 @@
             </div>
             <div class="form-group">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                <input class="form-check-input" type="checkbox" name="agree" id="gridCheck" required>
                 <label class="form-check-label" for="gridCheck">
                   Saya Setuju dengan Persyaratan Pembelian
                 </label>
               </div>
             </div>
             {{-- End alamat --}}
-            <button type="submit" class="btn btn-primary">Lakukan Pemesanan</button>
+            <button type="submit" class="btn btn-primary" onclick="cart.clearCart()">Lakukan Pemesanan</button>
           </div>
         </section>
         {{-- end identitas section --}}
@@ -76,11 +91,12 @@
         if (cart.cartCount()!=0) {
           data.forEach(e => {
             form += "<div class='input-group mb-3 row'>"+
-              "<input type='hidden' name=[id]["+i+"] disabled value="+e.id+">"+
+              "<input type='hidden' name='id[]' value="+e.id+">"+
               "<label class='col-sm-2 col-form-label'> - "+e.nama+"</label>"+
               "<label class='col-sm-2 col-form-label'> @"+e.harga+"</label>"+
+              "<input type='hidden' name='harga[]' value="+e.harga+">"+
               "<label class='col-sm-2 col-form-label'>Jumlah : </label>"+
-              "<select class='form-control col-sm-2 col-form-label' name=[qtw]["+i+"]'>"+
+              "<select class='form-control col-sm-2 col-form-label' name='qtw[]''>"+
                 "<option value='1'>1</option>"+
                 "<option value='2'>2</option>"+
                 "<option value='3'>3</option>"+
