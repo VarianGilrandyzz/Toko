@@ -156,6 +156,15 @@
   <!-- Template Main JS File -->
   <script src="{{ asset('/js/main.js') }}"></script>
 
+  <script src="{{ asset('/js/cart.js') }}"></script>
+  <script src="{{ asset('/js/custom.js') }}"></script>
+  <script>
+    const cart = new Cart();
+    updateIconCart(cart.cartCount());
+  </script>
+
+  @yield('js')
+
 </body>
 
 </html>

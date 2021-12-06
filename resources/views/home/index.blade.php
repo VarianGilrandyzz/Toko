@@ -19,7 +19,7 @@
 
         <div class="row">
           @foreach ($barang as $item)
-              @include('componen.produkCard',['btn'=>false])
+              @include('componen.produkCard')
           @endforeach
         </div>
       </div>
@@ -141,4 +141,23 @@
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->    
+@endsection
+
+@section('js')
+    <script>
+      function additem(btn) {
+        //cek apakah item telah di tambahkan
+        if (!cart.isItemInCart(btn.dataset.id)) {
+          cart.addCart(btn.dataset.id,btn.dataset.nama,btn.dataset.harga);
+          updateIconCart(cart.cartCount());
+          btn.innerText = "Hapus"
+          btn.setAttribute('class','btn btn-danger add-btn')
+        }else{
+          cart.removeItemCart(btn.dataset.id);
+          updateIconCart(cart.cartCount());
+          btn.innerText = "Tambahkan"
+          btn.setAttribute('class','btn btn-light add-btn')
+        }
+      }
+    </script>
 @endsection

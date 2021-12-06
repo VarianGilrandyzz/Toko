@@ -4,12 +4,13 @@
     <h4 class="title"><a href="{{ route('pemesanan') }}" class="card-title">{{$item['nama_barang']}}</a></h4>
     <p class="description">{{$item['deskripsi']}}</p>
     <p class="description"><b>Rp. {{$item['harga']}}</b></p>
-    @if ($btn)
-        <div class="btn-beli">
-          <label class="btn btn-light">
-            <input type="checkbox" name='produk' value="{{$item['id']}}"> Tambahkan
-          </label>
-        </div>
-    @endif
+    <div class="btn-beli">
+        <button class="btn btn-light add-btn" type="button" onclick="additem(this)"
+          data-nama="{{$item['nama_barang']}}"
+          data-id="{{$item['id_barang']}}"
+          data-harga="{{$item['harga']}}"
+        >Tambahkan</button>
+    </div>
   </div>
 </div>
+

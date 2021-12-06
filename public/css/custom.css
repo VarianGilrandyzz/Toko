@@ -16,3 +16,24 @@
 .btn-beli{
   margin-top: 10px;
 }
+
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+.label-cart[href],
+.badge-cart[href] {
+  background-color: #106eea;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #106eea;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -10px; 
+}

@@ -29,22 +29,6 @@ REPLACE INTO `barang` (`id_barang`, `nama_barang`, `harga`, `deskripsi`, `gambar
 	(4, 'Tabung Gas Elpiji', 19000, 'Tabung Gas Hijau Elpiji 3Kg', '1638389088Aquades.jpg');
 /*!40000 ALTER TABLE `barang` ENABLE KEYS */;
 
--- Dumping structure for table ladida.detail_pemesanan
-DROP TABLE IF EXISTS `detail_pemesanan`;
-CREATE TABLE IF NOT EXISTS `detail_pemesanan` (
-  `id_pemesanan` int(11) NOT NULL,
-  `id_barang` int(11) NOT NULL,
-  `jumlah` int(2) NOT NULL,
-  KEY `detail_to_pemesanan` (`id_pemesanan`),
-  KEY `detail_to_barang` (`id_barang`),
-  CONSTRAINT `detail_to_barang` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `detail_to_pemesanan` FOREIGN KEY (`id_pemesanan`) REFERENCES `pemesanan` (`id_pemesanan`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- Dumping data for table ladida.detail_pemesanan: ~0 rows (approximately)
-/*!40000 ALTER TABLE `detail_pemesanan` DISABLE KEYS */;
-/*!40000 ALTER TABLE `detail_pemesanan` ENABLE KEYS */;
-
 -- Dumping structure for table ladida.pembeli
 DROP TABLE IF EXISTS `pembeli`;
 CREATE TABLE IF NOT EXISTS `pembeli` (
@@ -101,6 +85,22 @@ REPLACE INTO `users` (`id`, `name`, `email`, `email_verified_at`, `is_admin`, `p
 	(2, 'user', 'user@gmail.com', NULL, NULL, '$2y$10$8vcTGEaRLy9WlhcoUYbaFuJbY6n6K5WC3iMkwhCkdmhoH2lJ0fjvK', NULL, '2021-10-10 08:00:33', '2021-10-10 08:00:33'),
 	(10, 'Mark', 'admin@admin.com', NULL, 1, '$2y$10$FklQZ6fkJo3X4fpuB54fQe.exnDCzV.p9ePUXZqmCMjbkxZvmIUVi', NULL, '2021-11-16 02:32:33', '2021-11-16 03:17:03');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
+
+-- Dumping structure for table ladida.detail_pemesanan
+DROP TABLE IF EXISTS `detail_pemesanan`;
+CREATE TABLE IF NOT EXISTS `detail_pemesanan` (
+  `id_pemesanan` int(11) NOT NULL,
+  `id_barang` int(11) NOT NULL,
+  `jumlah` int(2) NOT NULL,
+  KEY `detail_to_pemesanan` (`id_pemesanan`),
+  KEY `detail_to_barang` (`id_barang`),
+  CONSTRAINT `detail_to_barang` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `detail_to_pemesanan` FOREIGN KEY (`id_pemesanan`) REFERENCES `pemesanan` (`id_pemesanan`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table ladida.detail_pemesanan: ~0 rows (approximately)
+/*!40000 ALTER TABLE `detail_pemesanan` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detail_pemesanan` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

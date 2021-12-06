@@ -6,6 +6,12 @@
     <li><a class="nav-link scrollto" href="/#faq">Bantuan</a></li>
     <li><a class="nav-link scrollto" href="/#contact">Contact</a></li>
     <li>
+      <a class="nav-link" href="/pemesanan">
+        <i class="fa" style="font-size:24px">&#xf07a;</i>
+        <span class='badge badge-cart' id='lblCartCount'> 0 </span>
+      </a>
+    </li>
+    <li>
       <a class="nav-link" href="#">
         <button class="btn btn-primary" type="button">Cek Pemesanan</button>
       </a>
