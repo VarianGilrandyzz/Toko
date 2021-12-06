@@ -25,7 +25,7 @@ class UserHomeController extends Controller
     function pemesananProses(Request $request){
         $input = $request->all();
         $this->validate($request, [
-            'nama_lengkap' => ['required', 'max:30', 'string'],
+            'nama_lengkap' => ['required', 'max:30'],
             'no_telp' => ['required', 'digits_between:11,13'],
             'alamat' => ['required', 'max:50', 'string'],
             'agree' => ['required']
@@ -68,9 +68,17 @@ class UserHomeController extends Controller
             }
 
             //redirect
-            return redirect()->route('home')->with('info', 'transaksi berhasil');
+            return redirect()->route('lihat.pemesanan',['id'=>$pemesanan->id_pemesanan])->with('info', 'transaksi berhasil');
         } catch (\Throwable $th) {
-            return redirect()->route('home')->with('danger', 'transaksi gagal');
+            return redirect()->route('pemesanan')->with('danger', 'transaksi gagal');
         }
+    }
+
+    function lihatPesanan($id)
+    {
+        // $data = pemesanan::find($id);
+        // dd($data->pembeli);
+
+        dd(detail_pemesanan::first()->barang);
     }
 }

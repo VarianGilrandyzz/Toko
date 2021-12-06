@@ -21,7 +21,8 @@ Auth::routes([
 
 Route::get('/', 'UserHomeController@index')->name('home');
 Route::get('/pemesanan', 'UserHomeController@pemesanan')->name('pemesanan');
-Route::post('/pemesananProses', 'UserHomeController@pemesananProses')->name('proses.pemesanan');
+Route::post('/pemesanan/proses', 'UserHomeController@pemesananProses')->name('proses.pemesanan');
+Route::get('/pesanan/{id}', 'UserHomeController@lihatPesanan')->name('lihat.pemesanan');
 Route::get('admin', 'AdminHomeController@index')->name('admin.home');
 
 // route resource

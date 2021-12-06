@@ -15,4 +15,9 @@ class pembeli extends Model
     protected $fillable = [
         'nama_lengkap', 'alamat', 'no_telp'
     ];
+
+    function pemesanan()
+    {
+        return $this->hasMany('App\pemesanan', 'id_pembeli', 'id_pembeli');
+    }
 }

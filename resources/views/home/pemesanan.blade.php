@@ -37,7 +37,13 @@
               <div class="form-row row">
                 <div class="form-group col-md-6">
                   <label for="Input Nama">Nama</label>
-                  <input type="text" class="form-control" id="InputNama" name="nama_lengkap" placeholder="Masukan Nama">
+                  <input type="text" class="form-control {{ $errors->has('no_telp') ? 'is-invalid' : '' }}" id="InputNama" name="nama_lengkap"
+                    value="{{ old('nama_lengkap') }}" placeholder="Masukan Nama" >
+                    @if($errors->has('nama_lengkap'))
+                      <div class="invalid-feedback">
+                          <strong>{{ $errors->first('nama_lengkap') }}</strong>
+                      </div>
+                    @endif
                 </div>
                 <div class="form-group col-md-6">
                   <label for="phone">Telepon/WA</label>
@@ -60,7 +66,13 @@
             </div>
             <div class="form-group">
               <label for="alamat">Alamat</label>
-              <textarea name="alamat" id="alamat" class="form-control" rows="5" placeholder="Alamat Lengkap"></textarea>
+              <textarea name="alamat" id="alamat" class="form-control {{ $errors->has('no_telp') ? 'is-invalid' : '' }}" rows="5" 
+                placeholder="Alamat Lengkap">{{ old('alamat') }}</textarea>
+              @if($errors->has('alamat'))
+                  <div class="invalid-feedback">
+                      <strong>{{ $errors->first('alamat') }}</strong>
+                  </div>
+              @endif
             </div>
             <div class="form-group">
               <div class="form-check">
@@ -71,7 +83,7 @@
               </div>
             </div>
             {{-- End alamat --}}
-            <button type="submit" class="btn btn-primary" onclick="cart.clearCart()">Lakukan Pemesanan</button>
+            <button type="submit" class="btn btn-primary" >Lakukan Pemesanan</button>
           </div>
         </section>
         {{-- end identitas section --}}

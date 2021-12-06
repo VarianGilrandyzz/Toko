@@ -21,4 +21,9 @@ class pemesanan extends Model
         return $this->hasMany('App\detail_pemesanan','id_pemesanan','id_pemesanan');
 
     }
+
+    public function pembeli()
+    {
+        return $this->belongsTo('App\pembeli', 'id_pembeli');
+    }
 }
