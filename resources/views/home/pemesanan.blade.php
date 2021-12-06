@@ -59,7 +59,6 @@
             <button type="submit" class="btn btn-primary">Lakukan Pemesanan</button>
           </div>
         </section>
-
         {{-- end identitas section --}}
 
       </form>
@@ -69,27 +68,39 @@
 
 @section('js')
     <script>
-      const data = cart.getCart();
-      const formJumlah = document.getElementById('formJumlah');
-      let form = '<hr>';
-      let i = 1;
-      data.forEach(e => {
-        form += "<div class='input-group mb-3 row'>"+
-          "<input type='hidden' name=[id]["+i+"] disabled value= @"+e.id+">"+
-          "<label class='col-sm-2 col-form-label'> - "+e.nama+"</label>"+
-          "<label class='col-sm-2 col-form-label'> @"+e.harga+"</label>"+
-          "<label class='col-sm-2 col-form-label'>Jumlah : </label>"+
-          "<select class='form-control col-sm-2 col-form-label' name=[qtw]["+i+"]'>"+
-            "<option value='1'>1</option>"+
-            "<option value='2'>2</option>"+
-            "<option value='3'>3</option>"+
-            "<option value='4'>4</option>"+
-            "<option value='5'>5</option>"+
-          "</select>"+
-          "</div><hr>"
-          i++
-      });
-      console.log(form);
-      formJumlah.innerHTML = form
+      function addForm() {
+        const data = cart.getCart();
+        const formJumlah = document.getElementById('formJumlah');
+        let form = '<hr>';
+        let i = 1;
+        if (cart.cartCount()!=0) {
+          data.forEach(e => {
+            form += "<div class='input-group mb-3 row'>"+
+              "<input type='hidden' name=[id]["+i+"] disabled value="+e.id+">"+
+              "<label class='col-sm-2 col-form-label'> - "+e.nama+"</label>"+
+              "<label class='col-sm-2 col-form-label'> @"+e.harga+"</label>"+
+              "<label class='col-sm-2 col-form-label'>Jumlah : </label>"+
+              "<select class='form-control col-sm-2 col-form-label' name=[qtw]["+i+"]'>"+
+                "<option value='1'>1</option>"+
+                "<option value='2'>2</option>"+
+                "<option value='3'>3</option>"+
+                "<option value='4'>4</option>"+
+                "<option value='5'>5</option>"+
+              "</select>"+
+              "<button class='btn btn-danger col-sm-1' type='button' data-id="+e.id+" onclick='removeItem(this)'><i class='fa fa-trash' aria-hidden='true'></i></button>"+
+              "</div><hr>"
+              i++
+          });
+        }else{
+          form+="Tidak ada Barang di Keranjang"
+        }
+        formJumlah.innerHTML = form
+      }
+      function removeItem(btn) {
+        cart.removeItemCart(btn.dataset.id);
+        addForm();
+        updateIconCart(cart.cartCount());
+      }
+      addForm();
     </script>
 @endsection
