@@ -20,7 +20,7 @@
                 <div class="card-body">
                     {{-- {{-filter date data-  --}}
                     <form action="" method="get">
-                      <input type="hidden" name="status" value="{{$_GET['status']}}">
+                      <input type="hidden" name="status" value="{{$status}}">
                       <div class="row justify-content-end">
                       <div class="col-4">
                         <div class="input-group mb-3">
