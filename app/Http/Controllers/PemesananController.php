@@ -15,10 +15,19 @@ class PemesananController extends Controller
     public function index()
     {
         $status = "1,2,3,4";
+        $date = date('Y m d');
         if (isset($_GET['status'])) {
             $status= $_GET['status'];
         };
-        return view('admin.pemesanan.index', ['data'=>pemesanan::where('status',$status)->get()]);
+        if (isset($_GET['date'])) {
+            $date = $_GET['date'];
+        };
+        return view('admin.pemesanan.index', 
+            ['data'=>pemesanan::where('status',$status)
+                ->where('tgl_pemesanan','>=',$date)
+                ->get()
+            ]
+        );
     }
 
     /**

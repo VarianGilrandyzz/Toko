@@ -18,6 +18,25 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
+                    {{-- {{-filter date data-  --}}
+                    <form action="" method="get">
+                      <input type="hidden" name="status" value="{{$_GET['status']}}">
+                      <div class="row justify-content-end">
+                      <div class="col-4">
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Pilih Hari</label>
+                          </div>
+                          <input class="form-control" type="date" name="date">
+                          <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary" type="submit">Terapkan</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </form>
+                    {{-- {{-filter date data-  --}}
+
                     <table class="table table-light" id="tabel">
                      <thead>
                        <td>ID</td>
