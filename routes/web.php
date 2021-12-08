@@ -29,5 +29,6 @@ Route::get('admin', 'AdminHomeController@index')->name('admin.home');
 Route::resource('admin/user', UserController::class);
 Route::resource('admin/barang', BarangController::class);
 Route::resource('admin/pembeli', PembeliController::class);
+Route::resource('admin/pemesanan', PemesananController::class);
 
 

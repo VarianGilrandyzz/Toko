@@ -271,17 +271,22 @@ return [
             'submenu' => [
                 [
                     'text' => 'Mengantri',
-                    'url'  => 'admin/settings',
+                    'url'  => 'admin/pemesanan?status=1',
                     'icon' => 'fas fa-fw fa-lock',
                 ],
                 [
                     'text' => 'Dikirim',
-                    'url'  => 'admin/settings',
+                    'url'  => 'admin/pemesanan?status=2',
                     'icon' => 'fas fa-fw fa-lock',
                 ],
                 [
                     'text' => 'Selesai',
-                    'url'  => 'admin/settings',
+                    'url'  => 'admin/pemesanan?status=3',
+                    'icon' => 'fas fa-fw fa-lock',
+                ],
+                [
+                    'text' => 'Dibatalkan',
+                    'url'  => 'admin/pemesanan?status=4',
                     'icon' => 'fas fa-fw fa-lock',
                 ],
                 [
