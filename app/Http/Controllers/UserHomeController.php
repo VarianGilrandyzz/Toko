@@ -74,11 +74,16 @@ class UserHomeController extends Controller
         }
     }
 
-    function lihatPesanan($id)
+    function lihatPesanan()
     {
+
         // $data = pemesanan::find($id);
         // dd($data->pembeli);
-
-        dd(detail_pemesanan::first()->barang);
+        $data = null;
+        if (isset($_GET['id_pemesanan'])){
+            $data = pemesanan::find($_GET['id_pemesanan']);
+        }
+        return view('home.cekPemesanan',['data'=>$data]);
+        // dd($data);
     }
 }

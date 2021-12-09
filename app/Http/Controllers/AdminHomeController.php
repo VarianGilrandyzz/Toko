@@ -29,6 +29,6 @@ class AdminHomeController extends Controller
 
     public function profile()
     {
-        return view('admin.userDetail',['user'=>Auth::user()]);
+        return view('admin.user.show',['user'=>Auth::user()]);
     }
 }

@@ -250,7 +250,7 @@ return [
         [
             'text'        => 'Pegawai',
             'url'         => 'admin/user',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fa fa-id-card',
             'label'       => 4,
             'label_color' => 'success',
         ],
@@ -258,41 +258,41 @@ return [
         [
             'text' => 'Pembeli',
             'url'  => 'admin/pembeli',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fa fa-users',
         ],
         [
             'text' => 'Barang',
             'url'  => 'admin/barang',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => 'fa fa-cubes',
         ],
         [
             'text'    => 'Pesanan',
-            'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fa fa-shopping-basket',
             'submenu' => [
                 [
                     'text' => 'Mengantri',
                     'url'  => 'admin/pemesanan?status=1',
-                    'icon' => 'fas fa-fw fa-lock',
+                    'icon' => 'fa fa-tags',
                 ],
                 [
                     'text' => 'Dikirim',
                     'url'  => 'admin/pemesanan?status=2',
-                    'icon' => 'fas fa-fw fa-lock',
+                    'icon' => 'fa fa-tags',
                 ],
                 [
                     'text' => 'Selesai',
                     'url'  => 'admin/pemesanan?status=3',
-                    'icon' => 'fas fa-fw fa-lock',
+                    'icon' => 'fa fa-tags',
                 ],
                 [
                     'text' => 'Dibatalkan',
                     'url'  => 'admin/pemesanan?status=4',
-                    'icon' => 'fas fa-fw fa-lock',
+                    'icon' => 'fa fa-tags',
                 ],
                 [
                     'text' => 'Pesanan Baru',
-                    'url'  => 'admin/settings',
-                    'icon' => 'fas fa-fw fa-lock',
+                    'url'  => 'admin/pemesanan/create',
+                    'icon' => 'fa fa-cart-plus',
                 ]
             ],
         ],
@@ -300,7 +300,7 @@ return [
         [
             'text' => 'Goto Website',
             'url'  => '/',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fa fa-globe',
         ],
     ],
 
